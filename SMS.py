@@ -26,6 +26,10 @@ def close_db_connection(exception=None):
     conn = get_db_connection()
     conn.close()
 
+@app.route('/')
+def index():
+    return redirect('/login')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     with get_db_connection() as conn:
@@ -45,7 +49,7 @@ def login():
                 else:
                     session['autenticado'] = True
                     session['usuario'] = usuario['nome']  # Nome do usuário
-                    return redirect('https://bot-bolsa.streamlit.app/')
+                    return redirect('/dashboard')
             else:
                 # Caso as credenciais sejam inválidas, renderize a página de login novamente
                 return render_template('login.html', mensagem='Credenciais inválidas')
