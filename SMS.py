@@ -49,7 +49,7 @@ def login():
                 else:
                     session['autenticado'] = True
                     session['usuario'] = usuario['nome']  # Nome do usuário
-                    return redirect('/dashboard')
+                    return redirect('https://bot-bolsa.streamlit.app/')
             else:
                 # Caso as credenciais sejam inválidas, renderize a página de login novamente
                 return render_template('login.html', mensagem='Credenciais inválidas')
