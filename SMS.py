@@ -10,15 +10,16 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# Criando a tabela de usuários se ela não existir
-with get_db_connection() as conn:
-    cursor = conn.cursor()
-    cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios
-                      (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                       nome TEXT,
-                       senha TEXT,
-                       status TEXT)''')
-    conn.commit()
+# Criando o banco de dados e a tabela de usuários se eles não existirem
+def create_database():
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios
+                          (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                           nome TEXT,
+                           senha TEXT,
+                           status TEXT)''')
+        conn.commit()
 
 # Função auxiliar para fechar a conexão com o banco de dados
 def close_db_connection(exception=None):
@@ -120,5 +121,6 @@ def acesso_negado():
     return render_template('acesso_negado.html')
 
 if __name__ == '__main__':
+    create_database()  # Criar o banco de dados e a tabela
     app.teardown_appcontext(close_db_connection)
     app.run(debug=True)
