@@ -1,0 +1,54 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #3498db; /* Cor de fundo azul */
+            background-image: url('https://th.bing.com/th/id/R.92639a411c15670b7d524594e961f21f?rik=HmCwBiwBycp7eg&pid=ImgRaw&r=0.jpg'); /* Substitua pelo URL da sua imagem de fundo */
+            background-size: cover; /* Ajusta a imagem para cobrir todo o plano de fundo */
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo semi-transparente */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra do contêiner */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e74c3c; /* Cor de fundo do botão */
+            color: #fff; /* Cor do texto do botão */
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #c0392b; /* Cor de fundo do botão ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method="POST" action="/login">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            
+            <input type="submit" value="Login" class="button">
+        </form>
+    </div>
+</body>
+</html>
