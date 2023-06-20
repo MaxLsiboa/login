@@ -85,7 +85,7 @@ def cadastro():
                 return render_template('cadastro.html', mensagem='Usuário já cadastrado')
 
             # Insere o novo usuário no banco de dados
-            cursor.execute("INSERT INTO usuarios (nome, senha, status) VALUES (%s, %s, 'Ativo)", (username, password))
+            cursor.execute("INSERT INTO usuarios (nome, senha, status) VALUES (%s, %s, 'Ativo')", (username, password))
             conn.commit()
 
             # Redirecione para a página de dashboard após o cadastro
