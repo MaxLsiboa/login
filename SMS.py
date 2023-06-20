@@ -8,7 +8,7 @@ app.secret_key = '87862936'  # Chave secreta para sessões
 def get_db_connection():
     conn = mysql.connector.connect(
         host='us-cdbr-east-06.cleardb.net',
-        user='B86E228751E275',
+        user='b86e228751e275',
         password='ff7a90b5',
         database='heroku_1461fa05f65a833'
     )
