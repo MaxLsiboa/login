@@ -93,7 +93,7 @@ def cadastro():
             session['usuario'] = username
             return redirect('/dashboard')
 
-    return render_template('cadastro.html')
+    return render_template('dashboard.html')
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
