@@ -17,13 +17,21 @@ def get_db_connection():
 
 # Criando o banco de dados e a tabela de usuários se eles não existirem
 def create_database():
-    with get_db_connection() as conn:
-        cursor = conn.cursor()
-        cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios
-                          (id INT AUTO_INCREMENT PRIMARY KEY,
-                           nome VARCHAR(255),
-                           senha VARCHAR(255),
-                           status VARCHAR(255))''')
+    conn = mysql.connector.connect(
+        host='us-cdbr-east-06.cleardb.net',
+        user='b86e228751e275',
+        password='ff7a90b5'
+    )
+    cursor = conn.cursor()
+    cursor.execute("CREATE DATABASE IF NOT EXISTS heroku_1461fa05f65a833")
+    cursor.execute("USE heroku_1461fa05f65a833")
+    cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios
+                      (id INT AUTO_INCREMENT PRIMARY KEY,
+                       nome VARCHAR(255),
+                       senha VARCHAR(255),
+                       status VARCHAR(255))''')
+    conn.commit()
+    conn.close()
 
 # Função auxiliar para fechar a conexão com o banco de dados
 def close_db_connection(exception=None):
