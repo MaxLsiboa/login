@@ -10,7 +10,7 @@ def get_db_connection():
         host='us-cdbr-east-06.cleardb.net',
         user='b86e228751e275',
         password='ff7a90b5',
-        database='heroku_d155d5b311e1aa1'
+        database='heroku_1461fa05f65a833'
     )
     conn.autocommit = True
     return conn
