@@ -48,16 +48,16 @@
         </tr>
         {% for usuario in usuarios %}
         <tr>
-            <td>{{ usuario.nome }}</td>
-            <td>{{ usuario.senha }}</td>
-            <td>{{ usuario.status }}</td>
+            <td>{{ usuario[1] }}</td>
+            <td>{{ usuario[2] }}</td>
+            <td>{{ usuario[3] }}</td>
             <td>
-                <form id="{{ usuario.nome }}-form" action="/dashboard" method="POST">
-                    <input type="hidden" name="username" value="{{ usuario.nome }}">
-                    {% if usuario.status == 'Ativo' %}
-                    <button class="button red" onclick="toggleStatus('{{ usuario.nome }}')">Desativar</button>
+                <form id="{{ usuario[1] }}-form" action="/dashboard" method="POST">
+                    <input type="hidden" name="username" value="{{ usuario[1] }}">
+                    {% if usuario[3] == 'Ativo' %}
+                    <button class="button red" onclick="toggleStatus('{{ usuario[1] }}')">Desativar</button>
                     {% else %}
-                    <button class="button" onclick="toggleStatus('{{ usuario.nome }}')">Ativar</button>
+                    <button class="button" onclick="toggleStatus('{{ usuario[1] }}')">Ativar</button>
                     {% endif %}
                 </form>
             </td>
