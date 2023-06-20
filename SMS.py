@@ -25,6 +25,11 @@ def create_database():
                            senha VARCHAR(255),
                            status VARCHAR(255))''')
 
+# Função auxiliar para fechar a conexão com o banco de dados
+def close_db_connection(exception=None):
+    conn = get_db_connection()
+    conn.close()
+
 @app.route('/')
 def index():
     return redirect('/login')
@@ -125,4 +130,5 @@ def acesso_negado():
 
 if __name__ == '__main__':
     create_database()  # Criar o banco de dados e a tabela
+    app.teardown_appcontext(close_db_connection)
     app.run(debug=True)
